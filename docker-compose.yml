@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  api:
+    container_name: todo_api
+    image: ghcr.io/csaller/todo-api:latest
+    ports:
+      - 4444:4444
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://user:password@database:5432/renan_api
+      - PORT=4444
+    depends_on:
+      - database
+  database:
+    container_name: database
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: renan_api

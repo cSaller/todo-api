@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: TODO-API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4444/api
+tags:
+  - name: /todos
+paths:
+  /todos/:
+    get:
+      tags:
+        - /todos
+      summary: listAll
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /todos/{id}:
+    get:
+      tags:
+        - /todos
+      summary: list
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - /todos
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: New Title
+                description: New Description
+                completed: false
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
