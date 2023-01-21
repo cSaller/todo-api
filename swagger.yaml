@@ -47,7 +47,7 @@ paths:
               example:
                 title: New Title
                 description: New Description
-                completed: false
+                status: 'in-progress'
       parameters:
         - name: id
           in: path
